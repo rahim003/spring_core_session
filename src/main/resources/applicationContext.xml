@@ -1,0 +1,67 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <context:property-placeholder location="application.properties"/>
+    <!--    models-->
+    <bean id="address" class="peaksoft.models.Address">
+        <property name="regionName" value="${region}"></property>
+        <property name="street" value="${street}"></property>
+        <property name="homeNumber" value="${homeNumber}"></property>
+    </bean>
+    <bean id="country" class="peaksoft.models.Country">
+        <property name="countryName" value="${enum.country}"></property>
+        <property name="description" value="${description} "/>
+    </bean>
+    <bean id="programmer" class="peaksoft.models.Programmer">
+        <property name="fullName" value="${p.fullname}"></property>
+        <property name="email" value="${p.email}"></property>
+<!--        <property name="dateOfBirth" value="${p.birthdate}"></property>-->
+        <property name="status" value="${status}"></property>
+    </bean>
+    <bean id="project" class="peaksoft.models.Project">
+    </bean>
+    <!--    repositories-->
+    <bean id="addressRepo" class="peaksoft.repositories.impl.AddressRepository">
+    </bean>
+    <bean id="countryRepo" class="peaksoft.repositories.impl.CountryRepository">
+    </bean>
+    <bean id="programmerRepo" class="peaksoft.repositories.impl.ProgrammerRepository">
+    </bean>
+    <bean id="projectRepo" class="peaksoft.repositories.impl.ProjectRepository">
+    </bean>
+    <!--    services-->
+    <bean id="addressService" class="peaksoft.services.impl.AddressServiceImpl">
+    </bean>
+    <bean id="countryService" class="peaksoft.services.impl.CountryServiceImpl">
+    </bean>
+    <bean id="programmerService" class="peaksoft.services.impl.ProgrammerServiceImpl">
+    </bean>
+    <bean id="projectService" class="peaksoft.services.impl.ProjectServiceImpl">
+    </bean>
+
+    <!--    &lt;!&ndash;    configuration class&ndash;&gt;-->
+    <!--    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+    <!--        <property name="driverClassName" value="org.h2.Driver"/>-->
+    <!--        <property name="url" value="jdbc:postgresql://localhost:5432/session"/>-->
+    <!--        <property name="username" value="postgres"/>-->
+    <!--        <property name="password" value="123123"/>-->
+    <!--    </bean>-->
+
+    <!--    <bean id="entityManagerFactory"-->
+    <!--          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">-->
+    <!--        <property name="dataSource" ref="dataSource"/>-->
+    <!--        <property name="packagesToScan" value="peaksoft"/>-->
+    <!--        <property name="jpaVendorAdapter">-->
+    <!--            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>-->
+    <!--        </property>-->
+    <!--        <property name="jpaProperties">-->
+    <!--            <props>-->
+    <!--                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>-->
+    <!--                <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>-->
+    <!--            </props>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+
+</beans>
